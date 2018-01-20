@@ -1,5 +1,5 @@
 import requests
-from sources.Exceptions.NoResultException import NoResultException
+from sources.Exceptions import NoResultException
 
 class UrbanDictionary(object):
     def __init__(self):

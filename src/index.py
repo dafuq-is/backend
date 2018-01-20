@@ -2,7 +2,7 @@
 
 from bottle import route, run, HTTPResponse
 from sources.UrbanDictionary import UrbanDictionary
-from sources.Exceptions.NoResultException import NoResultException
+from sources.Exceptions import NoResultException
 
 @route('/<word>')
 def home(word):
