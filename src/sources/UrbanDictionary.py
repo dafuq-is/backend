@@ -19,5 +19,3 @@ class UrbanDictionary(object):
        
         return answer["list"][0]["definition"]
 
-#ud = UrbanDictionary
-
