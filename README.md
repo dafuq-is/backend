@@ -13,7 +13,7 @@ written using `bottle` (dependency supplied with repo) and
 
 ## Running
 - `$ pip install -r requirements.txt`
-- `$ python ./src/index.py
+- `$ python ./src/index.py`
 
 Note: The app will run on localhost on port 8080,
 we then setup our nginx proxy to forward requests 
