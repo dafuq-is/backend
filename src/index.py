@@ -13,10 +13,11 @@ def home(word):
         response.status = 404
         return HTTPResponse(status=404, body= "Dafuq! Urban Dictionary has no idea what  <b>" + word +"</b> is! ")
 
-    first = answer["list"][0]["definition"]
+    definition = answer["list"][0]["definition"]
     example = answer["list"][0]["example"]
+    ans_dict = { "definition": definition, "example": example }
     response.status = 200
-    return(first,example)
+    return(ans_dict)
 
 
 run(host='localhost', port=8080, debug=True)
