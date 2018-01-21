@@ -14,8 +14,9 @@ def home(word):
         return HTTPResponse(status=404, body= "Dafuq! Urban Dictionary has no idea what  <b>" + word +"</b> is! ")
 
     first = answer["list"][0]["definition"]
+    example = answer["list"][0]["example"]
     response.status = 200
-    return first
+    return(first,example)
 
 
 run(host='localhost', port=8080, debug=True)
