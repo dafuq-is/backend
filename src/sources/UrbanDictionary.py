@@ -3,7 +3,7 @@ from sources.Exceptions import NoResultException
 
 class UrbanDictionary(object):
     def __init__(self):
-        self._name = 'Urban Dictionary'
+        self._name = 'ud'
         self._apiBaseUrl = 'http://api.urbandictionary.com/v0/define?term='
 
     def getMeaning(self, term):
