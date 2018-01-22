@@ -1,16 +1,14 @@
 from sources.UrbanDictionary import UrbanDictionary
 from sources.Wordnik import Wordnik
 
-class Factory(object):
-    def __init__(self):
-        self._sourceDicts = {
-            'ud': UrbanDictionary(),
-            'wordnik': Wordnik()
-        }
+_sourcesDict = {
+    'ud': UrbanDictionary(),
+    'wordnik': Wordnik()
+}
 
-    def getSource(self, sourceName):
-        return self._sourceDicts[sourceName]
+def getSource(sourceName):
+    return _sourcesDict[sourceName]
 
-    def getAllSources(self):
-        return self._sourceDicts.keys()
+def getAllSources():
+  return _sourcesDict.keys()
 
