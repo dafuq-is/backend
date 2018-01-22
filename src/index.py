@@ -5,16 +5,8 @@ from sources.Exceptions import NoResultException
 from sources import Factory
 
 @route('/<word>')
-def home(word):
-    try:
-        meaning = Factory.getSource('ud').getMeaning(word)
-    except NoResultException:
-        return HTTPResponse(status=404, body="Dafuq! We have no idea what <b>" + word + "</b> is!")
-
-    return HTTPResponse(status=200, body=meaning)
-
 @route('/<word>/<service>')
-def choose(word, service):
+def choose(word, service='ud'):
     try:
         meaning = Factory.getSource(service).getMeaning(word)
     except NoResultException:
