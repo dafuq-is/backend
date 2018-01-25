@@ -19,3 +19,6 @@ class UrbanDictionary(object):
        
         return answer["list"][0]["definition"]
 
+    def getName(self):
+        return self._name
+
