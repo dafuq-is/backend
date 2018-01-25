@@ -19,7 +19,7 @@ def getMeaning(word):
     except NoResultException:
         return HTTPResponse(status=404, body="Dafuq! <b>" + word +  "</b> is not known to any of our sources")
 
-    return HTTPResponse(status=200, body=meaning)
+    return HTTPResponse(status=200, body=meaning['meaning'] + '.<br><br>as defined by: <b>' + meaning['source'] + '</b>')
 
 
 @route('/<word>/<service>')

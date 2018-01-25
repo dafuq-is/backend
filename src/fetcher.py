@@ -17,7 +17,7 @@ def fetchMeanings(sourceList, term):
 def fetchFirstMeaning(prioritySourceList, term):
     for source in prioritySourceList:
         try:
-            return Factory.getSource(source).getMeaning(term)
+            return {'source': source, 'meaning': Factory.getSource(source).getMeaning(term)}
         except NoResultException:
             pass #continue execution if result not found
             # Die if any other unexpected error occurs
