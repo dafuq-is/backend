@@ -1,5 +1,4 @@
 import os
-#from wordnik import swagger, WordApi
 import requests
 from sources.Exceptions import NoResultException
 
@@ -8,7 +7,6 @@ class Wordnik(object):
         self._name = "wordnik"
         self._apiUrl = "http://api.wordnik.com/v4/word.json/"
         self._apiKey = os.environ['DAFUQ_IS_WORDNIK_API_KEY']
-        #i/self._client = swagger.ApiClient("", _apiUrl +  _apiKey)
 
     def getMeaning(self, term):
         callUri = self._apiUrl + term + '/definitions?api_key=' + self._apiKey
@@ -19,4 +17,7 @@ class Wordnik(object):
             raise NoResultException
 
         return answer[0]['text']
+
+    def getName(self):
+        return self._name
 

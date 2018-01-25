@@ -1,5 +1,6 @@
 from sources.UrbanDictionary import UrbanDictionary
 from sources.Wordnik import Wordnik
+from sources.Exceptions import SourceNotFound
 
 _sourcesDict = {
     'ud': UrbanDictionary(),
@@ -7,7 +8,10 @@ _sourcesDict = {
 }
 
 def getSource(sourceName):
-    return _sourcesDict[sourceName]
+    if sourceName in _sourcesDict:
+        return _sourcesDict[sourceName]
+
+    raise SourceNotFound('The source ' + sourceName + ' was not found')
 
 def getAllSources():
   return _sourcesDict.keys()
