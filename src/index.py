@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+import random
+
 from bottle import route, run, HTTPResponse
 from sources.Exceptions import NoResultException, SourceNotFound
 from fetcher import fetchFirstMeaning
@@ -12,7 +14,21 @@ def main():
 
 @route('/<word>')
 def getMeaning(word):
-    _prioritizedSources = ['ud', 'wordnik']
+    _prioritizedSources = Factory.getAllSources()
+
+    # randomize (for now)
+    # The idea is to create a prioritized list based on the word
+    # A smart system that selects the likeliness of people looking for a specific source
+    # when they think of the word.
+    # e.g., when someone says fudge, they might be more like to find that its a replacement of f***
+    # rather than looking for a candy.
+    #
+    # We will categorize the sources based on what kind of meaning it provides (literal, pop culture, meme, etc)
+    # ...and find association of the particular word or phrase with these categories
+    #
+    # Each source within a category will be separately ranked
+    # One source can be in more than one category with different ranks
+    random.shuffle(_prioritizedSources)
 
     try:
         meaning = fetchFirstMeaning(_prioritizedSources, word)

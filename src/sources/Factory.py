@@ -14,5 +14,5 @@ def getSource(sourceName):
     raise SourceNotFound('The source ' + sourceName + ' was not found')
 
 def getAllSources():
-  return _sourcesDict.keys()
+  return list(_sourcesDict.keys())
 
