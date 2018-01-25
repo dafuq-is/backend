@@ -8,7 +8,7 @@ LAST_MODIFIED=`date -r ${FILE}`
 
 function boot
 {
-    PID=$(lsof -i:8080 | grep Python | awk 'NR==1{print $2}')
+    PID=$(lsof -i:${APP_PORT} | grep Python | awk 'NR==1{print $2}')
 
     if [[ -n "${PID}" ]]; then
         kill ${PID} 2>/dev/null
