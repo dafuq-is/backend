@@ -2,8 +2,8 @@
 
 - Avash Mulmi
 - Nootan Ghimire
-- Ankit Pokherel (#13)
-- Samundra Shrestha (#14, #15)
+- Ankit Pokherel ([#13](https://github.com/dafuq-is/backend/pull/13))
+- Samundra Shrestha ( [#14](https://github.com/dafuq-is/backend/pull/14), [#15](https://github.com/dafuq-is/backend/pull/15) )
 
 
 
