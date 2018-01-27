@@ -53,8 +53,7 @@ $(date) - - Started listening for changes...."
 function listen
 {
 
-	#[[ `which inotifywait` ]] && inotify_watch || legacy_watch
-	legacy_watch
+	[[ `which inotifywait` ]] && inotify_watch || legacy_watch
 }
 
 # Start script
