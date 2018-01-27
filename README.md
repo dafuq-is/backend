@@ -9,6 +9,7 @@ written in python, using `bottle` and `requests`.
 
 - `bottle` (Supplied with code, no need to install)
 - `requests` v2.1.14
+- `inotify-tools` (Install to OS)
 
 
 ## How to get up and running ?
