@@ -1,35 +1,25 @@
 #!/bin/bash
 
-source ./.env
+[[ -f .env ]] && source ./.env
 
 FILE='src/index.py'
-INIT="DAFUQ_IS_WORDNIK_API_KEY=${DAFUQ_IS_WORDNIK_API_KEY} python3 ${FILE} &"
-LAST_MODIFIED=`date -r ${FILE}`
+INIT="bash -c 'DAFUQ_IS_WORDNIK_API_KEY=${DAFUQ_IS_WORDNIK_API_KEY} exec -a dafuqis-backend python3 ${FILE} &'"
 
 function boot
 {
-    PID=$(lsof -i:${APP_PORT} | grep Python | awk 'NR==1{print $2}')
-
-    if [[ -n "${PID}" ]]; then
-        kill ${PID} 2>/dev/null
-    fi
-
-   eval ${INIT}
+	[[ `pgrep -f dafuqis-backend` ]] && pkill -f dafuqis-backend
+   	eval ${INIT}
+	sleep 1
 }
 
 function listen
 {
-    while true
-    do
-        MODIFIED=`date -r ${FILE}`
-        if [[ "$MODIFIED" != "$LAST_MODIFIED" ]]; then
-            echo 'Rebooting...'
-            boot
-
-            LAST_MODIFIED=${MODIFIED}
-        fi
-
-        sleep 1
+	echo "$(date) - - Starting listening for changes...."
+    while inotifywait -q -r -e modify src/
+    do   		
+		clear
+		echo "$(date) - - Change detected, restarting...."
+		boot
     done
 }
 
