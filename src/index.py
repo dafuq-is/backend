@@ -33,7 +33,8 @@ def get_meaning(word):
     #
     # Each source within a category will be separately ranked
     # One source can be in more than one category with different ranks
-    random.shuffle(_prioritizedSources)
+    # #random.shuffle(_prioritizedSources)
+    # # Don't randomize, because I love ud, whenever meaning is on ud. :D
 
     try:
         meaning = fetchFirstMeaning(_prioritizedSources, word)
