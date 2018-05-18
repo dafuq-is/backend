@@ -10,7 +10,11 @@ from sources import Factory
 
 
 def lambda_handler(event, context):
-    return get_meaning(event.word)
+    stuff = get_meaning(event["word"])
+    if (stuff is False):
+        return "Oops! No sources could find meaning of <b>" + event["word"] + "</b>"
+    
+    return stuff["meaning"] + "<br><br> As described by: <b>" + stuff["source"] + "</b>"
 
 
 def get_meaning(word):
@@ -19,6 +23,6 @@ def get_meaning(word):
     try:
         meaning = fetchFirstMeaning(_prioritizedSources, word)
     except NoResultException:
-        return false
+        return False
 
     return meaning
